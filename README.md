@@ -47,6 +47,10 @@ Repeat the same for **Windows VM**.
 - Check: ✅ Allow remote connections
 - Uncheck: ❌ “Allow connections only from computers with NLA”
 
+## 📸RDP Enabled
+![Enable RDP on Windows Machine](https://github.com/user-attachments/assets/104ea17b-0ae3-4abe-a263-2532d0c3d89b)
+
+
 ### Step 4: Allow RDP Through Firewall
 
 Run the following command as **Administrator** in CMD:
@@ -114,7 +118,8 @@ python3 rdp_brute.py
 You’ll see it try each password and print either "Success" or "Failed"
 
 ## 📸 Successful Login
-![RDP Brute Force Output](screenshot/brute_force_success.png)
+![brute_force_success](https://github.com/user-attachments/assets/ae66d164-0ae5-42ae-b071-1de4814a21c5)
+
 
 
 
