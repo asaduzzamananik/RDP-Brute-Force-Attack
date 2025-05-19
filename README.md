@@ -1,67 +1,55 @@
-# RDP Brute-Force Lab
+# 🛡️ RDP Brute-Force Attack Tool
 
-This project demonstrates a basic RDP brute-force attack in a VirtualBox environment using Kali Linux and a Windows VM.
+This is a Python-based brute-force script designed for **ethical hacking** and **cybersecurity learning** in a **controlled lab environment**. It targets a Windows VM with Remote Desktop Protocol (RDP) enabled and tests a list of passwords to identify weak credentials.
 
-## Files
-- `rdp_try10.py`: Python brute-force script using xfreerdp
-- `notes.txt`: Step-by-step notes and configuration
-- `screenshots/`: Images from the lab setup and execution
+> ⚠️ **Disclaimer:** This tool is for educational and authorized penetration testing purposes **only**. Misuse is illegal.
 
- STEP 1: Network Setup in VirtualBox
-1.1 Configure Host-Only Adapter for both VMs
-      • Shutdown both VMs.
-      • Go to VirtualBox → Select Kali VM → Settings → Network:
-  - Adapter 1 → Enable Network Adapter
-  -Set Attached to: Host-Only Adapter
-  (OR Internal Network, but both VMs must use the same mode)
-  Click Advanced → Set Adapter Type to: Intel PRO/1000 MT Desktop 
-    • Repeat the same for Windows VM.
-1.2 Boot both machines
-  • Start Kali Linux and Windows in VirtualBox.
+---
 
- STEP 2: Get IP Addresses
-On Kali Linux, run:
-    ip a / ifconfig
-Look for something like:
-  	inet 192.168.56.103 (under eth0 )
+## 🧰 Features
 
-On Windows, press Win + R, type: cmd and run:
-    ipconfig
-Look for:
-    IPv4 Address. . . . . . . . . . . : 192.168.56.102
+- Python script using `xfreerdp`
+- Tests 10 common passwords from a built-in wordlist
+- Simple, beginner-friendly code
+- Intended for virtual lab environments only
 
+---
 
-STEP 3: Enable RDP on Windows VM
-    - Enable RDP
-    Press Win + R, run:
-    SystemPropertiesRemote
-    • Check:  Allow remote connections to this computer
-    • Uncheck:  “Allow connections only from computers running Remote Desktop with NLA”
+## 🖥️ Lab Setup Instructions
 
-STEP 4: Allow RDP in Windows Firewall
-Open Command Prompt (as admin) and run:
+### Step 1: Setup Network in VirtualBox
+
+- Use **Host-Only Adapter** (or Internal Network) for both VMs:
+  - Go to: *VirtualBox → Settings → Network*
+  - Set `Adapter 1` → `Enable Network Adapter`
+  - Attached to: **Host-Only Adapter**
+  - Adapter Type: `Intel PRO/1000 MT Desktop`
+
+Repeat the same for **Windows VM**.
+
+### Step 2: Get IP Addresses
+
+- **Kali Linux:**  
+  Run `ip a` or `ifconfig`  
+  Look for something like: `192.168.56.103`
+
+- **Windows VM:**  
+  Run `cmd` → `ipconfig`  
+  Find: `IPv4 Address: 192.168.56.102`
+
+---
+
+## ⚙️ Windows RDP Configuration
+
+### Step 3: Enable RDP
+
+- Run: `SystemPropertiesRemote`
+- Check: ✅ Allow remote connections
+- Uncheck: ❌ “Allow connections only from computers with NLA”
+
+### Step 4: Allow RDP Through Firewall
+
+Run the following command as **Administrator** in CMD:
+
+```bash
 netsh advfirewall firewall add rule name="Allow RDP" dir=in action=allow protocol=TCP localport=3389
-
- STEP 5: Test RDP Connection from Kali
-5.1 Install xfreerdp
-    sudo apt update
-    sudo apt install freerdp2-x11
-
- STEP 6: Create Python Brute-Force Script
-6.1 Open Terminal → Create Script
-    nano rdp_brute.py
-6.2 Paste the Script:
-
-6.3 Save and Exit
-	6.3 Save and Exit
-      • Press Ctrl + O, then Enter to save.
-      • Press Ctrl + X to exit nano.
- STEP 7: Run the Brute-Force Script
-Run the script in kali linux using:
-    python3 rdp_brute.py
-
- STEP 7: Run the Brute-Force Script
-Run the script in kali linux using:
-python3 rdp_brute.py
-
-
