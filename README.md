@@ -31,11 +31,11 @@ Repeat the same for **Windows VM**.
 
 - **Kali Linux:**  
   Run `ip a` or `ifconfig`  
-  Look for something like: `192.168.56.103`
+  Look for something like: `192.168.56.**`
 
 - **Windows VM:**  
   Run `cmd` → `ipconfig`  
-  Find: `IPv4 Address: 192.168.56.102`
+  Find: `IPv4 Address: 192.168.56.**`
 
 ---
 
@@ -75,7 +75,7 @@ nano rdp_brute.py
 ```bash
 import subprocess
 
-target_ip = "192.168.56.102"  # Change to your Windows VM IP
+target_ip = "192.168.56.**"  # Change to your Windows VM IP
 username = "administrator"    # Change to your Windows user
 
 passwords = [
