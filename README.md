@@ -58,11 +58,6 @@ Run the following command as **Administrator** in CMD:
 ```bash
 netsh advfirewall firewall add rule name="Allow RDP" dir=in action=allow protocol=TCP localport=3389
 ```
-### Step 5: Test RDP Connection from Kali
-```bash
-xfreerdp /v:<your windows machine ip> /u:Admin /p:12345 /cert:ignore
-```
-✅ If you see the desktop or authentication prompt, it works.
 
 ## 🐍 Running the Python Script
 ### Step 5: Install FreeRDP on Kali
@@ -70,6 +65,11 @@ xfreerdp /v:<your windows machine ip> /u:Admin /p:12345 /cert:ignore
 sudo apt update
 sudo apt install freerdp2-x1
 ```
+## Step 5.2: Test RDP Connection from Kali
+```bash
+xfreerdp /v:<your windows machine ip> /u:Admin /p:12345 /cert:ignore
+```
+✅ If you see the desktop or authentication prompt, it works.
 
 ### Step 6: Write the Brute-Force Script
 Create the file:
