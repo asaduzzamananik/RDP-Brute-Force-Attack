@@ -1,12 +1,12 @@
-# 🛡️ RDP Brute-Force Attack Tool
+# RDP Brute-Force Attack Tool
 
 This is a Python-based brute-force script designed for **ethical hacking** and **cybersecurity learning** in a **controlled lab environment**. It targets a Windows VM with Remote Desktop Protocol (RDP) enabled and tests a list of passwords to identify weak credentials.
 
-> ⚠️ **Disclaimer:** This tool is for educational and authorized penetration testing purposes **only**. Misuse is illegal.
+>  **Disclaimer:** This tool is for educational and authorized penetration testing purposes **only**. Misuse is illegal.
 
 ---
 
-## 🧰 Features
+##  Features
 
 - Python script using `xfreerdp`
 - Tests 10 common passwords from a built-in wordlist
@@ -15,7 +15,7 @@ This is a Python-based brute-force script designed for **ethical hacking** and *
 
 ---
 
-## 🖥️ Lab Setup Instructions
+##  Lab Setup Instructions
 
 ### Step 1: Setup Network in VirtualBox
 
@@ -39,13 +39,13 @@ Repeat the same for **Windows VM**.
 
 ---
 
-## ⚙️ Windows RDP Configuration
+##  Windows RDP Configuration
 
 ### Step 3: Enable RDP
 
 - Run: `SystemPropertiesRemote`
-- Check: ✅ Allow remote connections
-- Uncheck: ❌ “Allow connections only from computers with NLA”
+- Check:  Allow remote connections
+- Uncheck:  “Allow connections only from computers with NLA”
 
 ## 📸RDP Enabled
 ![Enable RDP on Windows Machine](https://github.com/user-attachments/assets/104ea17b-0ae3-4abe-a263-2532d0c3d89b)
@@ -59,7 +59,7 @@ Run the following command as **Administrator** in CMD:
 netsh advfirewall firewall add rule name="Allow RDP" dir=in action=allow protocol=TCP localport=3389
 ```
 
-## 🐍 Running the Python Script
+##  Running the Python Script
 ### Step 5: Install FreeRDP on Kali
 ```bash
 sudo apt update
@@ -69,7 +69,7 @@ sudo apt install freerdp2-x1
 ```bash
 xfreerdp /v:<your windows machine ip> /u:Admin /p:12345 /cert:ignore
 ```
-✅ If you see the desktop or authentication prompt, it works.
+  If you see the desktop or authentication prompt, it works.
 
 ### Step 6: Write the Brute-Force Script
 Create the file:
